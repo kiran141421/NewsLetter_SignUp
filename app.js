@@ -1,4 +1,5 @@
 
+require('dotenv').config()
 const express=require('express');
 const bodyParser=require('body-parser');
 //const request=require('request');
@@ -37,9 +38,11 @@ app.post("/",function(req,res){
 
     const url= "https://us21.api.mailchimp.com/3.0/lists/e38686d873";
 
+    const API_KEY="kiran:"+process.env.MAILCHIMP_API_KEY;
+
     const options={
             method : "POST",
-            auth : "kiran:c7ffa8d361d3c2c9ab218bbe0258ab41-us21"
+            auth : API_KEY
     }
 
     var request = https.request(url,options,function(response){
@@ -72,9 +75,6 @@ app.listen(process.env.PORTtouch ||3000,function(){
 
 
 
-
-// API kEY
-// ede5e1ad2e2efeb54ffcb094d2ee4b8a-us21
 
 // Audience Id
 // e38686d873
